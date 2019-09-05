@@ -1,0 +1,9 @@
+django
+django-click
+django-phonenumber-field
+googlemaps
+gunicorn
+python-telegram-bot
+python-decouple
+psycopg2-binary
+phonenumbers
