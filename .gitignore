@@ -2,6 +2,9 @@ deps.tar.bz2
 .idea
 SampleModelSerialGEA - Sheet1.csv
 db.sqlite3
+db/
+credentials.json
+Dockerfile
 
 # Created by https://www.gitignore.io/api/django,python,pycharm
 

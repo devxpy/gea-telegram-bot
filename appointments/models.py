@@ -21,7 +21,7 @@ class Appointment(models.Model):
     )
 
     pin_code = models.ForeignKey(PinCode, on_delete=models.CASCADE)
-    weekday = models.CharField(max_length=8, choices=PinCode.WEEKDAY_CHOICES)
+    weekday = models.CharField(max_length=1, choices=PinCode.WEEKDAY_CHOICES)
     time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
 
     reason = models.CharField(max_length=4096)
