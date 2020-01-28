@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
 
-set -x
+set -ex
 
-docker run \
-    -v $PWD:$PWD \
-    -v $HOME/.cache/pip:/root/.cache/pip \
-    -w $PWD \
-    python:3.7 \
-    pip install -r req/main.txt --target dist
-
-cd dist
-tar -cjf ../deps.tar.bz2 .
-cd ..
-rm -r dist
+rm -rf deps
+pip install . --target deps
+cd deps
+tar -cjf ../gear_finder_deps.tar.bz2 .
