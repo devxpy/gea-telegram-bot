@@ -1,6 +1,6 @@
 0.0.0.0:80
 log stdout
-proxy / unix:{$HOME}/gunicorn.sock {
+proxy / unix:{$WORKDIR}/gunicorn.sock {
     except /static
     header_upstream Host {host}
 }
