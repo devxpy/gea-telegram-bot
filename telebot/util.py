@@ -1,3 +1,4 @@
+import secrets
 from functools import wraps
 from typing import Tuple, Dict, Callable
 
@@ -30,12 +31,12 @@ def reverse_geocode(coordinates: Dict[str, float]) -> Tuple[str, str, PinCode]:
 def get_user(up: tg.Update) -> CustomUser:
     user_detail = up.effective_user
     try:
-        user = CustomUser.objects.get(username=user_detail.username)
+        user = CustomUser.objects.get(username=str(user_detail.id))
     except CustomUser.DoesNotExist:
         user = CustomUser(
             first_name=user_detail.first_name,
             last_name=user_detail.last_name,
-            username=user_detail.username,
+            username=str(user_detail.id)
         )
         user.save()
     if not user.password:
@@ -49,7 +50,7 @@ def login_required(fn):
     def wrapper(bot, up: tg.Update, *args, **kwargs):
         user_detail = up.effective_user
         try:
-            user = CustomUser.objects.get(username=user_detail.username)
+            user = CustomUser.objects.get(username=str(user_detail.id))
         except CustomUser.DoesNotExist:
             pass
         else:
